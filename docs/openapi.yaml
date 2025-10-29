@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: Bank REST API
+  description: API для управления банковскими картами
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /users:
+    get:
+      summary: Получить всех пользователей
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Список пользователей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+    post:
+      summary: Создать нового пользователя
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequestDto'
+      responses:
+        '201':
+          description: Пользователь создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /cards:
+    get:
+      summary: Получить все карты
+      tags:
+        - Cards
+      responses:
+        '200':
+          description: Список карт
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CardDto'
+    post:
+      summary: Создать новую карту
+      tags:
+        - Cards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardRequestDto'
+      responses:
+        '201':
+          description: Карта создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDto'
+  /cards/{id}/block:
+    patch:
+      summary: Запрос на блокировку карты
+      tags:
+        - Cards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Карта переведена в состояние "PENDING_BLOCK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardDto'
+components:
+  schemas:
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        role:
+          type: string
+    UserRequestDto:
+      type: object
+      properties:
+        username:
+          type: string
+        role:
+          type: string
+    CardDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        ownerId:
+          type: integer
+        number:
+          type: string
+        expirationDate:
+          type: string
+          format: date
+        status:
+          type: string
+        balance:
+          type: number
+          format: double
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+    CardRequestDto:
+      type: object
+      properties:
+        ownerId:
+          type: integer
+        number:
+          type: string
+        expiryDate:
+          type: string
+        status:
+          type: string
+        balance:
+          type: number
+          format: double
+      required:
+        - ownerId
+        - number
+        - expiryDate
+        - status

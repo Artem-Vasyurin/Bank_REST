@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-updated-users
+      author: vasyurin
+      changes:
+        - addColumn:
+            tableName: "users"
+            columns:
+              - column:
+                  name: "password"
+                  type: "varchar(255)"
+                  constraints:
+                    nullable: true
+
+
+  - changeSet:
+      id: 02-fill-password
+      author: vasyurin
+      changes:
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: password
+                  value: 'tempPassword123'
+  - changeSet:
+      id: 03-set-password-not-null
+      author: vasyurin
+      changes:
+        - addNotNullConstraint:
+            tableName: users
+            columnName: password

@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01-create-users
+      author: Vasyurin.ar (generated)
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: VARCHAR(20)
+              - column:
+                  name: cdc_created
+                  type: java.sql.Types.TIMESTAMP_WITH_TIMEZONE
+              - column:
+                  name: cdc_updated
+                  type: java.sql.Types.TIMESTAMP_WITH_TIMEZONE

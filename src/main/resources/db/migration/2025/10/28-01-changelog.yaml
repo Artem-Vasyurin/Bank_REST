@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2-insert-default-users
+      author: Vasyurin.ar (generated)
+      context: seed
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: role
+                  value: ADMIN
+              - column:
+                  name: cdc_created
+                  valueDate: NOW()
+              - column:
+                  name: cdc_updated
+                  valueDate: NOW()
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: testuser
+              - column:
+                  name: role
+                  value: USER
+              - column:
+                  name: cdc_created
+                  valueDate: NOW()
+              - column:
+                  name: cdc_updated
+                  valueDate: NOW()
