@@ -1,29 +1,42 @@
 
-## 🏗 Старт проекта
+## Старт проекта
 
-### 1. Клонирование репозитория
+## 1. Скачать с репозитоия
 
-git clone <repo_url>
-cd bank_rest
+Клоннирование репозитория
+
+```bash
+git clone https://github.com/Artem-Vasyurin/Bank_REST
+```
 
 
-### 2. Настройка окружения через переменные
-Приложение использует переменные окружения для конфигурации:
+## 2. Переменные среды
+Чтобы запустить этот проект, вам необходимо добавить следующие переменные среды в файл .env
+ 
+`SPRING_SECURITY_USER_NAME`
 
-Переменная	                Описание	                        Пример значения
-SPRING_SECURITY_USER_NAME	    Имя обычного пользователя	    user
-SPRING_SECURITY_USER_PASSWORD	Пароль обычного пользователя	123
-JWT_SECRET	                    Секрет для JWT	                demo-secret-key
-JWT_EXPIRATION	                Время жизни токена в мс	        3600000
-APP_ADMIN_NAME	                Имя администратора	            admin
-APP_ADMIN_PASSWORD	            Пароль администратора	        admin
-SPRING_DATASOURCE_URL	        JDBC URL базы данных	        jdbc:postgresql://localhost:5432/Bank_DB
-SPRING_DATASOURCE_USERNAME	    Имя пользователя БД	            postgres
-SPRING_DATASOURCE_PASSWORD	    Пароль БД	                    postgres
+`SPRING_SECURITY_USER_PASSWORD`
 
-### 3. Запуск через Docker Compose
+`JWT_SECRET`
+
+`JWT_EXPIRATION`
+
+`APP_ADMIN_NAME`
+
+`APP_ADMIN_PASSWORD`
+
+`SPRING_DATASOURCE_URL`
+
+`SPRING_DATASOURCE_USERNAME`
+
+`SPRING_DATASOURCE_PASSWORD`
+
+## 3. Запуск через Docker Compose
+
+```bash
 docker-compose up --build
+```
 
-### 4. Документация API
+## 4. Документация API
 Swagger UI доступен по адресу:
 http://localhost:8080/api/swagger-ui/index.html
