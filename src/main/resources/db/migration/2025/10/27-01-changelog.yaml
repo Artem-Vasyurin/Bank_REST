@@ -22,7 +22,7 @@ databaseChangeLog:
                   type: VARCHAR(20)
               - column:
                   name: cdc_created
-                  type: java.sql.Types.TIMESTAMP_WITH_TIMEZONE
+                  type: TIMESTAMP WITH TIME ZONE
               - column:
                   name: cdc_updated
-                  type: java.sql.Types.TIMESTAMP_WITH_TIMEZONE
+                  type: TIMESTAMP WITH TIME ZONE

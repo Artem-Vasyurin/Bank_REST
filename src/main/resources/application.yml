@@ -4,21 +4,21 @@ spring:
 
   security:
     user:
-      name: ${SPRING_SECURITY_USER_NAME:user}
-      password: ${SPRING_SECURITY_USER_PASSWORD:123}
+      name: ${SPRING_SECURITY_USER_NAME}
+      password: ${SPRING_SECURITY_USER_PASSWORD}
 
     jwt:
-      secret: ${JWT_SECRET:demo-secret-key}
-      expiration: ${JWT_EXPIRATION:3600000}
+      secret: ${JWT_SECRET}
+      expiration: ${JWT_EXPIRATION}
 
     admin:
-      name: ${APP_ADMIN_NAME:admin}
-      password: ${APP_ADMIN_PASSWORD:admin}
+      name: ${APP_ADMIN_NAME}
+      password: ${APP_ADMIN_PASSWORD}
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/Bank_DB}
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
-    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       minimum-idle: 1

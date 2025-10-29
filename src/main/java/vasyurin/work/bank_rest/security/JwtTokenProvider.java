@@ -2,20 +2,29 @@ package vasyurin.work.bank_rest.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
 import java.security.Key;
 import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
 
-    private final String jwtSecret = "my-super-secret-key-which-is-at-least-32-bytes!";
-    private final long validityInMs = 3600000;
+
+    private final String jwtSecret;
+    private final long validityInMs;
+
+    public JwtTokenProvider(
+            @Value("${spring.security.jwt.secret}") String jwtSecret,
+            @Value("${spring.security.jwt.expiration:3600000}") long validityInMs){
+        this.jwtSecret = jwtSecret;
+        this.validityInMs = validityInMs;
+    }
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
-
 
     public String generateToken(String username, String role) {
         Date now = new Date();

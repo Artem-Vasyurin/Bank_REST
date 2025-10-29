@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-update-users-from-env
+      author: vasyurin
+      context: seed
+      changes:
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "${APP_ADMIN_NAME}"
+              - column:
+                  name: password
+                  value: "${APP_ADMIN_PASSWORD}"
+              - column:
+                  name: role
+                  value: "ADMIN"
+            where: role = 'ADMIN'
+
+        - update:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "${SPRING_SECURITY_USER_NAME}"
+              - column:
+                  name: password
+                  value: "${SPRING_SECURITY_USER_PASSWORD}"
+              - column:
+                  name: role
+                  value: "USER"
+            where: role = 'USER'
