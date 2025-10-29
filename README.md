@@ -19,8 +19,7 @@ git clone https://github.com/Artem-Vasyurin/Bank_REST
 
 `SPRING_SECURITY_USER_PASSWORD = user`
 
-#### Не менее 32 символов
-`JWT_SECRET = super-docker-secret-key-hochu-rabotu!` 
+`JWT_SECRET = super-docker-secret-key-hochu-rabotu!` *Не менее 32 символов*
 
 `JWT_EXPIRATION = 3600000`
 
@@ -46,10 +45,9 @@ http://localhost:8080/api/swagger-ui/index.html
 
 ## 5. Тестовые данные
 
-Изначально в таблице два пользователя:
+Изначально в таблице два пользователя c аналогичными паролями:
 - user
-- admin 
-с аналогичными паролями
+- admin
 
 Для получения JWT-токена выполните в Swagger запрос:
 
