@@ -11,7 +11,6 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-
     private final String jwtSecret;
     private final long validityInMs;
 
